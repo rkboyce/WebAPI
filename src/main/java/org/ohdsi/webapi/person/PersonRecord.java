@@ -22,7 +22,7 @@ import java.sql.Timestamp;
  * @author fdefalco
  */
 public class PersonRecord {
-  public String recordType;
+  public String domain;
   public Long conceptId;
   public String conceptName;
   public Timestamp startDate;

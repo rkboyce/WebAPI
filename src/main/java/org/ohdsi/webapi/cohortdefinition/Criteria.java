@@ -5,13 +5,14 @@
  */
 package org.ohdsi.webapi.cohortdefinition;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 /**
  *
- * @author cknoll1
+ * @author Chris Knoll <cknoll@ohdsi.org>
  */
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.WRAPPER_OBJECT)
@@ -30,5 +31,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
   @JsonSubTypes.Type(value = Specimen.class, name = "Specimen"),
   @JsonSubTypes.Type(value = VisitOccurrence.class, name = "VisitOccurrence")
 })
-public abstract class Criteria implements ICohortExpressionElement {
+public abstract class Criteria {
+  public abstract String accept(IGetCriteriaSqlDispatcher dispatcher);
+  
+  @JsonProperty("CorrelatedCriteria")  
+  public CriteriaGroup CorrelatedCriteria;
+  
 }
