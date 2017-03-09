@@ -7,8 +7,12 @@ package org.ohdsi.webapi.cohortdefinition;
 
 /**
  *
- * @author cknoll1
+ * @author Anthony Sena <https://github.com/ohdsi>
  */
-public interface ICohortExpressionElement {
-  String accept(ICohortExpressionElementVisitor visitor);
+public class InclusionRule {
+  public String name;
+
+  public String description;
+  
+  public CriteriaGroup expression;
 }

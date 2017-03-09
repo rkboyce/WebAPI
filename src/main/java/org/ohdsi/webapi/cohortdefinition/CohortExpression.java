@@ -7,6 +7,8 @@ package org.ohdsi.webapi.cohortdefinition;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,7 +30,19 @@ public class CohortExpression {
   @JsonProperty("ConceptSets")
   public ConceptSet[] conceptSets;
   
+  @JsonProperty("QualifiedLimit")  
+  public ResultLimit qualifiedLimit = new ResultLimit();
+  
   @JsonProperty("ExpressionLimit")
-  public ResultLimit limit;
+  public ResultLimit expressionLimit = new ResultLimit();
+
+  @JsonProperty("InclusionRules")
+  public List<InclusionRule> inclusionRules = new ArrayList<>();
+  
+  @JsonProperty("EndStrategy")
+  public EndStrategy endStrategy;
+  
+  @JsonProperty("CensoringCriteria")
+  public Criteria[] censoringCriteria;
   
 }

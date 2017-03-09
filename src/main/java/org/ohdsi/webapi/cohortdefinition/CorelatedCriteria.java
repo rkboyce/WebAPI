@@ -11,18 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @author cknoll1
  */
-public class AdditionalCriteria implements ICohortExpressionElement {
+public class CorelatedCriteria {
   @JsonProperty("Criteria")
   public Criteria criteria;  
   
   @JsonProperty("StartWindow")
   public Window startWindow;  
 
+  @JsonProperty("EndWindow")
+  public Window endWindow;  
+  
   @JsonProperty("Occurrence")
   public Occurrence occurrence;  
-
-  @Override
-  public String accept(ICohortExpressionElementVisitor visitor) {
-    return visitor.visit(this);
-  }
 }

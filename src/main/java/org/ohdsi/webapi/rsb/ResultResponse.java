@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Observational Health Data Sciences and Informatics [OHDSI.org].
+ * Copyright 2016 fdefalco.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ohdsi.webapi.cohortdefinition;
+package org.ohdsi.webapi.rsb;
 
-/**
- *
- * @author Chris Knoll <cknoll@ohdsi.org>
- */
-public enum GenerationStatus {
-  PENDING,
-  RUNNING,
-  COMPLETE
-}  
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({
+  "result"
+})
+public class ResultResponse {
+
+  @JsonProperty("result")
+  private Result result;
+
+  /**
+   *
+   * @return The result
+   */
+  @JsonProperty("result")
+  public Result getResult() {
+    return result;
+  }
+
+  /**
+   *
+   * @param result The result
+   */
+  @JsonProperty("result")
+  public void setResult(Result result) {
+    this.result = result;
+  }
+
+}
