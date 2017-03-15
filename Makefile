@@ -6,13 +6,15 @@ package: compile
 	mvn package -Pwebapi-postgresql-laertes
 
 deploy: package 
-	sudo service tomcat7 stop
+	#sudo service tomcat7 stop
+	/var/lib/tomcat7/bin/shutdown.sh
 	sleep 4
 	sudo rm -rf /var/lib/tomcat7/webapps/WebAPI*
 	sudo cp -r target/WebAPI.war  /var/lib/tomcat7/webapps/
-	sudo chown tomcat7 /var/lib/tomcat7/webapps/WebAPI.war
-	sudo chgrp tomcat7 /var/lib/tomcat7/webapps/WebAPI.war
-	sudo service tomcat7 start
+	#sudo chown tomcat7 /var/lib/tomcat7/webapps/WebAPI.war
+	#sudo chgrp tomcat7 /var/lib/tomcat7/webapps/WebAPI.war
+	#sudo service tomcat7 start
+	/var/lib/tomcat7/bin/startup.sh
 
 git-push:
 	git push myfork master
